@@ -77,7 +77,8 @@ export const getServerSideProps = async context => {
         props: {
             articles,
             pageNumber: +pageNumber
-        }
+        },
+        revalidate: 60
     }
 
 }
