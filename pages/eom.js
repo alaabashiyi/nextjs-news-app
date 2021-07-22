@@ -1,6 +1,7 @@
 import { Toolbar } from '../components/toolbar';
 import Image from 'next/image';
 import styles from '../styles/EOM.module.css';
+import profileImage from '../assets/images/profile.jpg';
 
 export const EOM = ({ employee }) => {
 
@@ -13,7 +14,7 @@ export const EOM = ({ employee }) => {
                 <div className={styles.employeeOfTheMonth}>
                     <h3>{employee.name}</h3>
                     <h6>{employee.position}</h6>
-                    <Image src={employee.image} alt="profileImage" layout='fill' />
+                    <Image src={profileImage} alt="profileImage" />
                     <p>{employee.description}</p>
                 </div>
             </div>
@@ -30,7 +31,8 @@ export const getServerSideProps = async (context) => {
     return {
         props: {
             employee
-        }
+        },
+        revalidate: 60
     }
 };
 
